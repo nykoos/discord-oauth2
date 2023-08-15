@@ -55,7 +55,7 @@ router.get("/callback", async (req, res) => {
 					user_id: user.id,
 				},
 			})
-			.catch((err) => {
+			.catch((err: Error) => {
 				console.log(err);
 				res.status(500).send("Internal Server Error");
 				return;
@@ -91,7 +91,7 @@ router.get("/callback", async (req, res) => {
 						user_id: user.id,
 					},
 				})
-				.catch((err) => {
+				.catch((err: Error) => {
 					console.log(err);
 					res.status(500).send("Internal Server Error");
 					return;
@@ -140,6 +140,4 @@ router.get("/logout", async (req, res) => {
 	}
 });
 
-export default (): express.Router => {
-	return router;
-};
+export default router;

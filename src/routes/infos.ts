@@ -43,6 +43,4 @@ router.get("/me", async (req, res) => {
 	}
 });
 
-export default (): express.Router => {
-	return router;
-};
+export default router;

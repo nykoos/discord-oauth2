@@ -6,6 +6,4 @@ router.get("/", (req, res) => {
 	res.json({ details: "The API is online!" });
 });
 
-export default (): express.Router => {
-	return router;
-};
+export default router;
