@@ -3,8 +3,6 @@ import { api_users_me_guilds, api_users_me } from "../utils/auth/api_requests";
 import { check_session } from "../utils/auth/sessions";
 const router = express.Router();
 
-module.exports = router;
-
 router.get("/guilds", async (req, res) => {
 	/*
 	Check the session and send back the guilds the user is in.
