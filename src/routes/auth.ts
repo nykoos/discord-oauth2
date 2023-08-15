@@ -6,15 +6,14 @@ import {
 } from "../utils/auth/api_requests";
 import { prisma } from "../index";
 import { check_session } from "../utils/auth/sessions";
+import { env } from "../utils/other/env";
 
 const router = express.Router();
-
-module.exports = router;
 
 router.get("/login", (req, res) => {
 	res.json({
 		details:
-			"https://discord.com/api/oauth2/authorize?client_id=1134976739064430732&redirect_uri=http%3A%2F%2Flocalhost%3A4511%2Fauth%2Fcallback&response_type=code&scope=identify%20guilds",
+			`https://discord.com/api/oauth2/authorize?client_id=${env.CLIENT_ID}&redirect_uri=http%3A%2F%2Flocalhost%3A4511%2Fauth%2Fcallback&response_type=code&scope=identify%20guilds`,
 	});
 });
 
@@ -56,7 +55,7 @@ router.get("/callback", async (req, res) => {
 					user_id: user.id,
 				},
 			})
-			.catch((err) => {
+			.catch((err: Error) => {
 				console.log(err);
 				res.status(500).send("Internal Server Error");
 				return;
@@ -92,7 +91,7 @@ router.get("/callback", async (req, res) => {
 						user_id: user.id,
 					},
 				})
-				.catch((err) => {
+				.catch((err: Error) => {
 					console.log(err);
 					res.status(500).send("Internal Server Error");
 					return;
@@ -141,6 +140,4 @@ router.get("/logout", async (req, res) => {
 	}
 });
 
-export default (): express.Router => {
-	return router;
-};
+export default router;
