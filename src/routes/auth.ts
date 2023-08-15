@@ -12,8 +12,7 @@ const router = express.Router();
 
 router.get("/login", (req, res) => {
 	res.json({
-		details:
-			`https://discord.com/api/oauth2/authorize?client_id=${env.CLIENT_ID}&redirect_uri=http%3A%2F%2Flocalhost%3A4511%2Fauth%2Fcallback&response_type=code&scope=identify%20guilds`,
+		details: `https://discord.com/api/oauth2/authorize?client_id=${env.CLIENT_ID}&redirect_uri=${env.REDIRECT_URI}&response_type=code&scope=identify%20guilds`,
 	});
 });
 
