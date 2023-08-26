@@ -99,11 +99,9 @@ router.get("/callback", async (req, res) => {
 
 		const session_id = db_entry?.session_id;
 
-		if (!req.cookies.sessionid) {
-			res.cookie("sessionid", session_id, { httpOnly: true });
-		}
+		res.cookie("sessionid", session_id, { httpOnly: true });
 
-		res.redirect("http://localhost:4511/infos/guilds");
+		res.redirect("../infos/guilds");
 	} catch (err) {
 		console.log(err);
 		res.status(500).send("Internal Server Error");

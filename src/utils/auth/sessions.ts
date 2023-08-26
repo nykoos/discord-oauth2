@@ -14,7 +14,7 @@ const check_session = async (session_id: string | undefined) => {
 		});
 
 		if (data === null) {
-			return 500;
+			return 401;
 		}
 
 		const me = await api_users_me(data.token);
